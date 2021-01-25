@@ -46,3 +46,11 @@ Route::get('notas', function() {
 Route::get('notas/{id}/editar', function($id) {
     return 'Aqui vamos a editar las notas: '.$id;
 });
+
+Route::get('notas/{id}/detalle', function($id) {
+    return 'Ver los detalles de la nota: '.$id;
+});
+
+Route::get('notas/nueva', function() {
+    return 'Aqui agregamos nuevas notas';
+});
