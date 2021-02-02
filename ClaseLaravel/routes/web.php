@@ -40,9 +40,12 @@ Route::get('/', function () {
 });
 
 Route::get('notas', function() {
-    return 'Aqui se visualisan todas las notas';
+    return view('notas');
 });
 
+Route::get('agregar', function() {
+    return view('agregar');
+});
 Route::get('notas/{id}/editar', function($id) {
     return 'Aqui vamos a editar las notas: '.$id;
 });
