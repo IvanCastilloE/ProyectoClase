@@ -41,13 +41,8 @@ Route::get('/', function () {
 });
 
 Route::get('notas', function() {
-    $notas = [
-        'Primera nota',
-        'Segunda nota',
-        'Tersera nota',
-        'Cuarta nota',
+    $notas = DB::table('notas')->get();
 
-    ];
     return view('notas', ['notas' => $notas]);
 }) ->name('notas.index');
 
@@ -55,7 +50,8 @@ Route::get('agregar', function() {
     return view('agregar');
 });
 Route::get('notas/{id}/editar', function ($id){
-    return 'Aqui vamos a editar las notas: '.$id;
+    $nota = DB::table('notas')->where('id', $id)->first();
+    return view('editar', ['notas' => $nota]);
 })->name('notas.edit');
 
 Route::get('notas/{id}/detalle', function($id) {
