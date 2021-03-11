@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Models\Notas;
 
 /*
@@ -55,10 +56,20 @@ Route::get('notas/{id}/editar', function ($id){
     $nota = Notas::find($id); //DB::table('notas')->where('id', $id)->first();
     return view('editar', ['notas' => $nota]);
 })->name('notas.edit');
+Route::post('crear', function(Request $request){
+    Notas::create([
+        'titulo'=> $request->input('title'), 
+        'contenido'=> $request->input('content'),
+    ]);
+
+    return redirect('/notas');
+
+})->name('notas.edit');
 
 Route::get('notas/{id}/detalle', function($id) {
     return 'Ver los detalles de la nota: '.$id;
 });
+
 
 Route::get('notas/nueva', function() {
     return 'Aqui agregamos nuevas notas';
