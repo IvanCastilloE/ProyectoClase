@@ -6,7 +6,9 @@
                     <div class="card-body">
                         <h1>{{ $notas->titulo }}</h1>
 
-                        <form action="">
+                        <form method="POST" action="{{ url("notas/{$notas->id}/editar") }}">
+                            @csrf
+                            @method('PUT')
                             <label for="title" class="field-label">Título: </label>
                             <input type="text" name="title" id="title" class="field-input" value="{{ $notas->titulo }}"></input>
 
